@@ -1,6 +1,7 @@
 # rrrt2
 # - MQS
 import os
+import platform
 import json
 import urllib, urllib2
 
@@ -80,7 +81,10 @@ class Pronunciation(object):
     def play(self):
         if not self._is_downloaded():
             self.download()
-        os.system('afplay %s' % self._local_file_name)
+        if platform.system == 'Linux':
+            os.system('mpg123 -q %s' % self._local_file_name)
+        else:
+            os.system('afplay %s' % self._local_file_name)
     
     def _create_file_name(self, format=None):
         if not format:
