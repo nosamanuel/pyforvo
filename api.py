@@ -81,7 +81,7 @@ class Pronunciation(object):
     def play(self):
         if not self._is_downloaded():
             self.download()
-        if platform.system == 'Linux':
+        if platform.system() == 'Linux':
             os.system('mpg123 -q %s' % self._local_file_name)
         else:
             os.system('afplay %s' % self._local_file_name)
