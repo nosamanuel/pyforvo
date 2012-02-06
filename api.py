@@ -31,8 +31,8 @@ class Forvo(object):
         
         pronunciations = []
         try:
-            self._last_resonse = urllib2.urlopen(url).read()
-            results = json.loads(self._last_resonse)
+            self._last_response = urllib2.urlopen(url).read()
+            results = json.loads(self._last_response)
             
             # Some requests will return an empty list or None
             if not results:
